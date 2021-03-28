@@ -1,0 +1,25 @@
+ion-slides {
+  height: 100%;
+}
+.slide1{
+  width: 100%;
+  height: 700px;
+}
+.slide2{
+  background-color: white;
+  position: absolute;
+  left: 20%;
+  top: 40%;
+  -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:200px;
+    width: 200px;
+    height:200px;
+}
+.slide3{
+  position: absolute;
+  left: 25%;
+  top: 40%;
+    width:55%;
+    height:50px;
+}

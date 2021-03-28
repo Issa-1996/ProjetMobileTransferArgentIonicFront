@@ -1,0 +1,86 @@
+<ion-header class="heider">
+  <ion-icon name="home" class="home" (click)="backHome()"></ion-icon>
+  <img src="../assets/WhatsApp Image 2021-02-25 .jpeg" class="icon">
+  <h5 style="text-align: center; margin-top:25px; font-size:14px">Toutes les Transactions</h5>
+</ion-header>
+
+<ion-content> 
+
+  <ion-item style="width: 45%;height:40px; color:blue; font-size:10px">
+    <ion-label>Users</ion-label>
+    <ion-select>
+      <ion-select-option value="f">Female</ion-select-option>
+      <ion-select-option value="m">Male</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item style="width: 45%;height:40px; color:blue; font-size:10px;margin-left:50%; margin-top:-12%">
+    <ion-label>Type</ion-label>
+    <ion-select>
+      <ion-select-option value="f">Female</ion-select-option>
+      <ion-select-option value="m">Male</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Chargement des données...">
+
+      <table class="table table-hover" style="margin-top: 10px;">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <td>    </td>
+            <th scope="col"> User</th>
+            <td>    </td>
+            <th scope="col">Type</th>
+            <td>   </td>
+            <th scope="col">Montant</th>
+            <td>    </td>
+            <th scope="col">Frais</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr class="table-active" *ngFor="let depot of depots">
+            <td>{{ depot.dateDepot | date }}</td>
+            <td>    </td>
+            <td>{{ prenom }}</td>
+            <td>   </td>
+            <td>Depot</td>
+            <td>    </td>
+            <td>{{ depot.montant }}</td>
+            <td>    </td>
+            <td>{{ depot.frais }}</td>
+          </tr>
+          <tr class="table-active" *ngFor="let retrait of retraits">
+            <td>{{ retrait.dateRetrait | date }}</td>
+            <td>    </td>
+            <td>{{ nom }}</td>
+            <td>  </td>
+            <td>Retrait</td>
+            <td>    </td>
+            <td>{{ retrait.montant }}</td>
+            <td>    </td>
+            <td>{{ retrait.frais }}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <div style="height: 30px;">
+    <div style="text-align: right; ">
+      <button disabled class="somme">
+        <button class="total" disabled>Total</button>
+        <label>{{ Total}}</label>
+      </button>
+    </div>
+    <ion-icon name="home" style="width: 50px;height:25px ;color:red; margin-left:20px; margin-top:30%" ></ion-icon>
+    <ion-icon name="reload-outline" style="width: 50px;height:25px ;color:grey;margin-left:20px"></ion-icon>
+    <ion-icon name="server-outline" style="width: 50px;height:25px ;color:grey;margin-left:20px"></ion-icon>
+    <ion-icon name="calculator-outline"  style="width: 50px;height:25px ;color:grey;margin-left:20px"></ion-icon>
+  </div>
+
+</ion-content>

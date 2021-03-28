@@ -1,0 +1,28 @@
+<ion-header class="heider">
+      <img src="../assets/WhatsApp Image 2021-02-25 .jpeg" class="icon">
+      <h5>Login</h5> 
+</ion-header>
+  
+<ion-content>
+  <h6 style="color: red; text-align:center; font-size:10px; margin-top:15%"> {{ messageError }} </h6>
+  <ion-list inset class="list">
+
+    <ion-label style="font-size: 12px;" stacked>Username</ion-label>
+    <ion-item class="item">
+      <ion-input type="text" name="email" placeholder="Enrer Login" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <h6 style="color: red; font-size:10px; margin-top:-10%"> {{ emailError }} </h6>
+
+    <ion-label style="font-size: 12px;" stacked>Password</ion-label>
+    <ion-item class="item">
+      <ion-input type="password" name="password" placeholder="Enrer Password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <h6 style="color: red; font-size:10px;  margin-top:-10%"> {{ passwordError }} </h6>
+    
+
+  </ion-list>
+  <ion-button color="secondary" (click)="loginAction()">Se Connecter</ion-button>  
+</ion-content>
+
+
+<!--Infinity Scrool-->

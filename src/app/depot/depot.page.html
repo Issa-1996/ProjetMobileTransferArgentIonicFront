@@ -1,0 +1,94 @@
+<ion-header class="heider">
+  <ion-icon name="home" class="home" (click)="backHome()"></ion-icon>
+  <img src="../assets/WhatsApp Image 2021-02-25 .jpeg" class="icon">
+  <h5>Depot</h5> 
+</ion-header>
+
+
+<ion-content> 
+  <ion-toolbar>
+    <ion-segment value="all">
+      <ion-segment-button value="all" (click)="emetteur()">Emetteur</ion-segment-button>
+      <ion-segment-button value="favorites" (click)="recepteur()">Recepteur</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <div *ngIf="status==='true'">
+    <ion-list class="list">
+
+      <ion-label style="font-size: 10px;">N° CNI</ion-label>
+      <ion-item class="item" style="margin-top: -5px;">
+        <ion-input type="number" name="cni" placeholder="Enrer CNI" [(ngModel)]="data.depotClient.cni"></ion-input>
+      </ion-item>
+      <h6 style="color: red; font-size:10px; margin-top:-2px; margin-left:5px"> {{ error.depotClient.cni }} </h6>
+
+  
+      <ion-label style="font-size: 10px;">Nom</ion-label>
+      <ion-item class="item" style="margin-top: -5px;">
+        <ion-input type="text" name="nom1" placeholder="Enrer Nom" [(ngModel)]="data.depotClient.nom"></ion-input>
+      </ion-item>
+      <h6 style="color: red; font-size:10px; margin-top:-2px; margin-left:5px"> {{ error.depotClient.nom }} </h6>
+
+      <ion-label style="font-size: 10px;" stacked>Prenom</ion-label>
+      <ion-item class="item" style="margin-top: -5px;">
+        <ion-input type="text" name="prenom1" placeholder="Enrer Prenom" [(ngModel)]="data.depotClient.prenom"></ion-input>
+      </ion-item>
+      <h6 style="color: red; font-size:10px; margin-top:-2px; margin-left:5px"> {{ error.depotClient.prenom }} </h6>
+  
+      <ion-label style="font-size: 12px;" stacked>Telephone</ion-label>
+      <ion-item class="item" style="margin-top: -5px;">
+        <ion-input type="text" name="telephone1" placeholder="Enrer Telephone" [(ngModel)]="data.depotClient.telephone"></ion-input>
+      </ion-item>
+      <h6 style="color: red; font-size:10px; margin-top:-2px; margin-left:5px"> {{ error.depotClient.telephone }} </h6>
+     
+
+      <ion-label style="font-size: 10px;" stacked>Montant</ion-label>
+      <ion-item class="item" style="margin-top: -5px;">
+        <ion-input type="number" name="montant" placeholder="Enrer Montant" [(ngModel)]="data.montant" ></ion-input>
+      </ion-item>
+      <h6 style="color: red; font-size:10px; margin-top:-2px; margin-left:5px"> {{ error.montant }} </h6>
+      
+      
+      <ion-item style="width: 50%; margin-left:50%;margin-top:1px; color:red;" (click)="mesFrais()">
+        <ion-label style="font-size: 10px;" >Frais</ion-label>
+        <ion-input name="frais"> {{ frais }}</ion-input>
+      </ion-item>
+
+      <ion-item >
+        <ion-label style="font-size: 10px;">Total</ion-label>
+        <ion-input>{{ montant }}</ion-input>
+      </ion-item>
+      
+    </ion-list>
+    <ion-button color="secondary" (click)="recepteur()">Suivant</ion-button>
+  
+  </div>
+  <div *ngIf="status==='false'">
+    <ion-list inset class="list">
+     
+        <ion-label style="font-size: 12px;" stacked>Nom</ion-label>
+        <ion-item class="item">
+          <ion-input type="text" name="nom2" placeholder="Enrer Nom" [(ngModel)]="data.retraitClient.nom"></ion-input>
+        </ion-item>
+        <h6 style="color: red; font-size:10px; margin-top:-2px; margin-left:5px"> {{ error.retraitClient.nom }} </h6>
+        
+        <ion-label style="font-size: 12px;" stacked>Prenom</ion-label>
+        <ion-item class="item">
+          <ion-input type="text" name="prenom2" placeholder="Enrer Prenom" [(ngModel)]="data.retraitClient.prenom"></ion-input>
+        </ion-item>
+        <h6 style="color: red; font-size:10px; margin-top:-2px; margin-left:5px"> {{ error.retraitClient.prenom }} </h6>
+        
+        <ion-label style="font-size: 12px;" stacked>Telephone</ion-label>
+        <ion-item class="item">
+          <ion-input type="text" name="telephone2" placeholder="Enrer Telephone" [(ngModel)]="data.retraitClient.telephone"></ion-input>
+        </ion-item>
+        <h6 style="color: red; font-size:10px; margin-top:-2px; margin-left:5px"> {{ error.retraitClient.telephone }} </h6>
+
+        
+      </ion-list>
+    <ion-button color="secondary" (click)="onSubmit()">Terminer</ion-button>
+  </div>
+<ion-icon name="home" style="width: 50px;height:25px ;color:red; margin-left:20px;margin-top:480px" ></ion-icon>
+<ion-icon name="reload-outline" style="width: 50px;height:25px ;color:grey;margin-left:20px"></ion-icon>
+<ion-icon name="server-outline" style="width: 50px;height:25px ;color:grey;margin-left:20px"></ion-icon>
+<ion-icon name="calculator-outline"  style="width: 50px;height:25px ;color:grey;margin-left:20px"></ion-icon>
+</ion-content>

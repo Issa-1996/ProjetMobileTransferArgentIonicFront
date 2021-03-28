@@ -1,0 +1,77 @@
+<ion-header class="heider">  
+  
+  <ion-router-outlet id="main"></ion-router-outlet>
+  <img src="../assets/WhatsApp Image 2021-02-25 .jpeg" class="icon">
+  <img src="data:image/png;base64,{{UserAvatar }}" alt="Le profil" width="50" height="50" class="avatar">
+  <div class="solde" >
+      <h4>Mon solde disponible</h4>
+      <h2 *ngIf="status==='true'" (click)="afficher()">{{ UsersConnects.solde}} </h2>
+      <div style="margin-left: 20%; margin-top:10%" (click)="cacher()">
+        <svg *ngIf="status==='false'" width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg" >
+          <path d="M18.011 0.331492C17.5691 -0.110497 16.7956 -0.110497 16.2431 0.331492L13.5912 2.98343C12.424 2.55016 11.1897 2.32575 9.94475 2.32044C5.74586 2.43094 1.98895 4.64088 0 8.28729C0.220994 8.72928 0.552486 9.17127 0.883978 9.61326C1.76796 10.8287 2.87293 11.8232 4.0884 12.5967L2.20994 14.4751C1.76796 14.9171 1.65746 15.6906 2.20994 16.2431C2.65193 16.6851 3.42541 16.7956 3.9779 16.2431L18.011 2.09945C18.453 1.54696 18.453 0.773481 18.011 0.331492ZM6.29834 10.2762L4.86188 11.7127C3.53591 10.9392 2.32044 9.83425 1.43646 8.50829C2.76243 6.62983 4.53039 5.30387 6.62983 4.64088C5.19337 6.18785 5.08287 8.61878 6.29834 10.2762ZM10.0552 6.62983C9.50276 6.07735 9.61326 5.19337 10.1657 4.64088C10.7182 4.19889 11.4917 4.19889 12.0442 4.64088L10.0552 6.62983ZM19.116 7.18232C18.5635 6.40884 17.9006 5.63536 17.1271 5.08287L16.0221 6.18785C16.9061 6.85083 17.6796 7.62431 18.3425 8.61878C16.4641 11.4917 13.2597 13.2597 9.83425 13.2597H8.95028L7.8453 14.3646C8.61878 14.2541 9.28177 14.3646 9.94475 14.3646C13.5912 14.3646 17.0166 12.5967 19.116 9.61326C19.4475 9.17127 19.6685 8.72928 20 8.28729C19.6685 7.9558 19.4475 7.51381 19.116 7.18232ZM14.3646 7.73481L9.94475 12.1547C12.3757 12.1547 14.3646 10.1657 14.3646 7.73481Z" fill="#51BFD0"/>
+          </svg>
+          
+      </div>
+      <h6 *ngIf="status==='true'">F CFA</h6>
+      <h5>Mise à jour le {{ date | date: 'short'}}</h5>
+  </div>
+  <ion-icon name="reorder-three-outline" (click)="openCustom()" class="btnMenu"></ion-icon>
+</ion-header>
+
+<!--<label> {{ UsersConnect.comptes.montant }} </label>-->
+<ion-menu side="start" menuId="custom" contentId="main" class="my-custom-menu">
+  <ion-header>
+    <ion-toolbar color="tertiary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    
+    <ion-list>
+      <ion-item (click)="presentAlertConfirm()">Home</ion-item>
+      <ion-item (click)="mesTransactions()"> Transactions</ion-item>
+      <ion-item (click)="commission()">Commissions</ion-item>
+      <ion-item (click)="frais()">Calculateur</ion-item>
+      <ion-item (click)="presentAlertConfirm()">Deconnexion</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-content>
+  <!-- List of Text Items -->
+<ion-list class="list"> 
+  <ion-item>
+    <ion-icon name="return-up-forward" class="depot"></ion-icon>
+    <ion-label (click)="depot()" class="label"> Depot</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="return-up-back" class="depot"></ion-icon>
+    <ion-label class="label" (click)="retrait()">Retrait</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="refresh-outline" class="depot"></ion-icon>
+    <ion-label class="label" (click)="mesTransactions()">Mes Transactions</ion-label>
+  </ion-item>
+  <ion-item *ngIf="profil==='AdminSysteme'">
+    <ion-icon name="repeat-outline" class="depot"></ion-icon>
+    <ion-label class="label" (click)="transactions()">Toutes les transactions</ion-label>
+  </ion-item>
+  <ion-item *ngIf="profil==='AdminSysteme'">
+    <ion-icon name="server-outline" class="depot"></ion-icon>
+    <ion-label class="label" (click)="commission()">Mes Commissions</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="calculator-outline" class="depot"></ion-icon>
+    <ion-label class="label" (click)="frais()">Calculateur de frais</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="log-out-outline" class="depot"></ion-icon>
+    <ion-label (click)="presentAlertConfirm()" class="label">Deconnexion</ion-label>
+  </ion-item>
+</ion-list>
+
+<ion-icon name="home" style="width: 50px;height:25px ;color:red; margin-left:20px" ></ion-icon>
+<ion-icon name="reload-outline" style="width: 50px;height:25px ;color:grey;margin-left:20px" (click)="mesTransactions()"></ion-icon>
+<ion-icon name="server-outline" style="width: 50px;height:25px ;color:grey;margin-left:20px"></ion-icon>
+<ion-icon name="calculator-outline"  style="width: 50px;height:25px ;color:grey;margin-left:20px" (click)="frais()"></ion-icon>
+
+</ion-content>

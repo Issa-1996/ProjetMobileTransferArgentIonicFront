@@ -1,0 +1,30 @@
+<ion-header class="heider">
+  <ion-icon name="home" class="home" (click)="backHome()"></ion-icon>
+  <img src="../assets/WhatsApp Image 2021-02-25 .jpeg" class="icon">
+  <h5><ion-icon name="calculator-outline"  style="width: 50px;height:20px ;color:grey;margin-left:20px; color:aqua"></ion-icon>Calculatrice de frais</h5> 
+</ion-header>
+
+<ion-content>
+  <ion-list inset class="list">
+
+    <ion-label style="font-size: 12px;" stacked>Type de transaction</ion-label>
+    <ion-item class="item">
+      <ion-input type="text" name="email" [(ngModel)]="type"></ion-input>
+    </ion-item>
+
+    <ion-label style="font-size: 12px;" stacked>Montant</ion-label>
+    <ion-item class="item">
+      <ion-input type="number" name="montant" [(ngModel)]="montant"></ion-input>
+    </ion-item>
+    
+
+  </ion-list>
+  <ion-button color="red" (click)="submit()">Calculer</ion-button>  
+  
+
+  <ion-icon name="home" style="width: 50px;height:25px ;color:red; margin-left:20px;margin-top:360px" ></ion-icon>
+  <ion-icon name="reload-outline" style="width: 50px;height:25px ;color:grey;margin-left:20px"></ion-icon>
+  <ion-icon name="server-outline" style="width: 50px;height:25px ;color:grey;margin-left:20px"></ion-icon>
+  <ion-icon name="calculator-outline"  style="width: 50px;height:25px ;color:grey;margin-left:20px"></ion-icon>
+  
+</ion-content>

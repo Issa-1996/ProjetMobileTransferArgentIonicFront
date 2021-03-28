@@ -1,0 +1,54 @@
+<ion-header class="heider">
+  <ion-icon name="home" class="home" (click)="backHome()"></ion-icon>
+  <img src="../assets/WhatsApp Image 2021-02-25 .jpeg" class="icon">
+  <h5>Retrait</h5> 
+</ion-header>
+
+
+<ion-content class="content"> 
+
+
+  <ion-list style="background-color:gainsboro;">
+      <ion-label style="font-size: 12px;" stacked>Code</ion-label>
+      <ion-input type="text" name="code" placeholder="Enrer Code" [(ngModel)]="data.codeTransaction" (ngModelChange)="codeRetrait($event)"></ion-input>
+  </ion-list>
+
+  <ion-toolbar>
+    <ion-segment value="all">
+      <ion-segment-button value="all" (click)="emetteur()">Beneficiaire</ion-segment-button>
+      <ion-segment-button value="favorites" (click)="recepteur()">Emetteur</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div *ngIf="status==='true'">
+    <ion-list>
+
+      <ion-label style="font-size: 12px; margin-left:30px" *ngIf="etat==='true'">N° CNI</ion-label>
+      <ion-item *ngIf="etat==='true'" style="margin-left:30px;width:80%;margin-bottom:30px">
+        <ion-input type="number" name="cni" placeholder="Enrer CNI" [(ngModel)]="data.retraitClient.cni"></ion-input>
+      </ion-item>
+
+      <div *ngIf="etat==='true'" style="height: 200px; width:80%;margin-top:-15px">
+          <h6 style="font-size: 16px;height:30px;margin-left:30px;"> Nom et prenom <br/> <b>{{ nomBeneficiaire }} </b></h6>        
+          <h6 style="font-size: 16px;height:30px;margin-left:30px;">Montant a recevoir <br/> <b>{{ montant }} fr cfa</b></h6>
+          <h6 style="font-size: 16px;height:30px;margin-left:30px;">Telephone <br/> <b>{{ telephone }}</b> </h6>
+          <h6 style="font-size: 16px;height:30px;margin-left:30px;">Date d'envoi <br/> <b>{{ date }}</b></h6>
+      </div>
+
+    </ion-list>
+  </div>
+
+
+  <div *ngIf="status==='false'">
+    <ion-list>
+      <div *ngIf="etat==='true'" style="height: 210px; width:80%;margin-top:-15px">
+        <h6 style="font-size: 16px;height:30px;margin-left:30px;"> CNI <br/><b> {{ cniEmetteur }} </b></h6>        
+        <h6 style="font-size: 16px;height:30px;margin-left:30px;"> Nom et prenom <br/><b> {{ nomEmetteur }} </b></h6>        
+        <h6 style="font-size: 16px;height:30px;margin-left:30px;"> Montant <br/><b> {{ montant }} </b></h6>        
+        <h6 style="font-size: 16px;height:30px;margin-left:30px;">Telephone <br/> <b>{{ telephoneEmetteur }}</b> </h6>
+        <h6 style="font-size: 16px;height:30px;margin-left:30px;">Date d'envoi <br/> <b>{{ date }}</b></h6>
+      </div>
+    </ion-list>
+  </div>
+  <ion-button color="secondary" (click)="onSubmit()" *ngIf="etat==='true'">Retirer</ion-button>
+</ion-content>
